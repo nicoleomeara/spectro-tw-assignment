@@ -1,19 +1,76 @@
-# Debug Operations in Kubernetes
+# Debug Kubernetes with kubectl
 
-Kubernetes contains several commands, sometimes we can use these commands to do things. A good command to know is kubectl get pods which is used to get a list of all pods that are available and what their status is. Just rememember that when you use this command tat you may have to specify the `namespace`.
+Kubernetes has several commands you can use to debug issues. You can use these commands to troubleshoot your cluster resources. 
+
+## Get Pod Status
+
+Use `kubectl get pods` to retrieve a list of all pods and their status. If you have multiple namespaces set up, you should specify the namespace when using this command. 
 
 ```shell
-kubectl get pods --namespace 
+kubectl get pods --namespace default
 ```
 
-Speaking of commands, kubectl is the CLI that is used to interact with k8s. The kubectl cli commmunicates with the kubernettes API server.  Another command that is helpful is the kubectl logs command. In Azure, kubernetess is available, just like other cloud providers. This command is used to retrive the logs of a specific pod - do use this when you have to review logs or need to debug a container. Another we will dicuss is the `kubectl exec` command. A command that we can use to debug a container from the inside or to explore the the enviroment of the container itself.  I recommend when debugging you start with kubectl get pods, then `kubectl logs` and lastly we can use `kubectl exec` to explore the inside of the container and review other log files or configurations. 
+```shell
+NAME                      READY   STATUS    RESTARTS   AGE
+NAME                           READY   STATUS         RESTARTS   AGE
+demo-cron-29374632-zf6cr       0/1     Completed      0          93s
+demo-job-dsq62                 0/1     Completed      0          93s
+demo-job-j46v8                 0/1     Error          0          107s
+demo-pod                       0/1     ErrImagePull   0          9s
+echo-deploy-64bb977ddd-j28sm   1/1     Running        0          107s
+echo-deploy-64bb977ddd-v5jc8   1/1     Running        0          107s
+```
 
-**Note:** The command `kubectl debug` is another option to considering when debugging a container. This command can be used to create a clone of a pod that does not terminate if an error is experienced inside the container. 
+### Access Pod Logs
 
+Use `kubectl logs` along with the pod name to retrieve the logs of a specific pod. This command helps you review logs and debug container issues.
 
+```shell
+kubectl logs my-app-59854d5646-lmtgx 
+```
 
-# References
+```shell
+2025/11/07 00:16:30 [notice] 1#1: using the "epoll" event method
+2025/11/07 00:16:30 [notice] 1#1: nginx/1.29.3
+2025/11/07 00:16:30 [notice] 1#1: built by gcc 14.2.0 (Debian 14.2.0-19) 
+2025/11/07 00:16:30 [notice] 1#1: OS: Linux 6.11.11-linuxkit
+2025/11/07 00:16:30 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+```
 
-- https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-strong-getting-started-strong-
+### Execute Commands in Containers
 
+Use `kubectl exec` to execute a command on a container from the inside or to explore the container's environment. Keep in mind that this command expects additional inputs, such as the pod name, container info, and other flags. See [kubectyl exec](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_exec/) for more info. For this example, we'll use 
+
+```shell
+kubectl exec -it my-app-59854d5646-lmtgx -- /bin/bash
+```
+
+```shell
+root@nginx-deployment-test1:/# ls
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+```
+
+## Recommended Workflow
+
+We recommend following this sequence when debugging:
+
+1. Start with `kubectl get pods` to identify problematic pods.
+2. Use `kubectl logs <podname>` to examine pod logs for error messages.
+3. Use `kubectl exec` to explore the container environment and review configuration files.
+
+## Advanced Debugging
+
+The `kubectl debug` command provides another option for debugging containers. This command creates a clone of a pod that does not stop if an error occurs inside the container.
+
+```shell
+kubectl debug nginx-deployment-abc123 -it --image=busybox
+```
+
+## `kubectl` Command Line Interface (CLI)
+
+The `kubectl` Command Line Interface (CLI) communicates with the Kubernetes API server. You use kubectl to interact with Kubernetes (K8s) clusters across all major cloud providers, including Azure.
+
+## References
+
+- [kubectl Commands](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-strong-getting-started-strong-)
 - [What is Kubernetes](https://kubernetes.io/docs/concepts/overview/)

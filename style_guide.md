@@ -4,8 +4,8 @@ Use the following style guide for all writing assignments.
 
 ### Simplified English
 
-Use simple English in Spectro Cloud material unless explicitly stated otherwise in this guide. 
-More importantly, simple language helps the reader retain information and more readily understand concepts. 
+Use simple English in Spectro Cloud material unless explicitly stated otherwise in this guide.
+More importantly, simple language helps the reader retain information and more readily understand concepts.
 
 |   Good  ✅                                                          | Bad ❌                                                                   |
 |--------------------------------------------------------------------------|----------------------------------------------------------------------------------|
@@ -13,13 +13,11 @@ More importantly, simple language helps the reader retain information and more r
 | Choose a node to be the cluster master node.                              | Designate a node to be the cluster master node.                                   |
 | Drain the node before a version upgrade.                                  | It is essential to drain the node prior to a version upgrade.                     |  
 
-
 ### Present Tense
 
 Users read documentation to perform tasks or gather information. For users, these activities take place in their present, so the present tense is proper in most cases. Additionally, the present tense is simpler to read than the past or future tense.
 
 ### Voice
-
 
 Use the active voice whenever possible. The active voice is usually more direct and vigorous than the passive. When you write a sentence in the active voice, it is also usually shorter than in the passive voice.
 
@@ -41,7 +39,6 @@ Don't use ableist language. This avoids biases and harm when discussing disabili
 | Navigate to the tab titled, Settings.                             | Jump to the next tab.                                            |
 | Issue the command kubectl get pods.                               | Run the command kubectl get pods.                                |
 
-
 ### Acronyms
 
 Use title case when defining an acronym. Use the same rules that apply to headline styles. Some acronyms are in nature written in a camel case. Example: IaaS, kCh, SaaS.
@@ -55,7 +52,7 @@ The exception is when an acronym will appear only once in your content. Spell ou
 | Boot the Virtual Machine (VM).   | Boot the virtual machine (VM).     |
 | Boot all the Virtual Machines (VMs).   | Boot all the virtual machine (VMs).    |
 | This is called Infrastructure as a Service (IaaS).   | This is called infrastructure as a service (IaaS).     |
-| Dynamic-Link Library (DLL).   | dynamic-link library (DLL).     | 
+| Dynamic-Link Library (DLL).   | dynamic-link library (DLL).     |
 
 ### Gender
 
@@ -71,18 +68,13 @@ Use title case for headings. If the heading is conceptual or non-task based, the
 | Access Audit Logs                             | Accessing audit logs                                           |
 | Quick Start with Palette App Mode                              | Quick start with Palette app mode                               |
 
-
-
 ### Command Output
 
 Show the command output to help the reader follow along and validate they are receiving the expected output.
 
-
-
 ```shell
 kind create cluster
 ```
-
 
 ```shell
 Creating cluster "kind" ...
