@@ -1,6 +1,8 @@
 # Debug Kubernetes with kubectl
 
-Kubernetes has several commands you can use to debug issues. You can use these commands to troubleshoot your cluster resources. 
+Kubernetes (k8s) has several commands you can use to debug issues with kubectl, the k8s Command Line Interface (CLI). The kubectl CLI communicates with the k8s API layer, and works across all major cloud providers, including Azure. 
+
+
 
 ## Get Pod Status
 
@@ -52,7 +54,7 @@ bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  s
 
 ## Recommended Workflow
 
-We recommend following this sequence when debugging:
+We recommend this sequence for debugging:
 
 1. Start with `kubectl get pods` to identify problematic pods.
 2. Use `kubectl logs <podname>` to examine pod logs for error messages.
@@ -65,10 +67,6 @@ The `kubectl debug` command provides another option for debugging containers. Th
 ```shell
 kubectl debug nginx-deployment-abc123 -it --image=busybox
 ```
-
-## `kubectl` Command Line Interface (CLI)
-
-The `kubectl` Command Line Interface (CLI) communicates with the Kubernetes API server. You use kubectl to interact with Kubernetes (K8s) clusters across all major cloud providers, including Azure.
 
 ## References
 
