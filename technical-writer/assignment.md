@@ -1,12 +1,10 @@
 # Debug Kubernetes with kubectl
 
-Kubernetes (k8s) has several commands you can use to debug issues with kubectl, the k8s Command Line Interface (CLI). The kubectl CLI communicates with the k8s API layer, and works across all major cloud providers, including Azure. 
-
-
+Kubernetes (k8s) has several commands you can use to debug issues with kubectl, the k8s Command Line Interface (CLI). kubectl communicates with the k8s API layer, and works across all major cloud providers, including Azure. 
 
 ## Get Pod Status
 
-Use `kubectl get pods` to retrieve a list of all pods and their status. If you have multiple namespaces set up, you should specify the namespace when using this command. 
+Use `kubectl get pods` to retrieve a list of all pods and their status. If you have multiple namespaces set up, specify the namespace when using this command. 
 
 ```shell
 kubectl get pods --namespace default
@@ -41,7 +39,7 @@ kubectl logs my-app-59854d5646-lmtgx
 
 ### Execute Commands in Containers
 
-Use `kubectl exec` to execute a command on a container from the inside or to explore the container's environment. Keep in mind that this command expects additional inputs, such as the pod name, container info, and other flags. See [kubectyl exec](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_exec/) for more info. For this example, we'll use 
+Use `kubectl exec` to execute a command on a container from the inside or to explore the container's environment. This command expects additional inputs, such as the pod name, container info, and other flags. See [kubectyl exec](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_exec/) for more info. For this example, we'll use -it and -- bin/bash, which will <!--add in at computer-->
 
 ```shell
 kubectl exec -it my-app-59854d5646-lmtgx -- /bin/bash
