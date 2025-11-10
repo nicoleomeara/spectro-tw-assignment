@@ -1,6 +1,6 @@
 # Debug Kubernetes with `kubectl`
 
-You use `kubectl`, the Kubernetes command-line interface (CLI), to work directly with your cluster. `kubectl` talks to the Kubernetes API server and works with any standard cluster, whether it’s on your local machine using Docker Desktop or hosted by a cloud provider. This guide shows you how to debug pods and containers using common `kubectl` commands.
+You use `kubectl`, the Kubernetes Command-Line Interface (CLI), to work directly with your cluster. `kubectl` talks to the Kubernetes API server and works with any standard cluster, whether it’s on your local machine using Docker Desktop or hosted by a cloud provider. This guide explains practical ways to debug pods and containers using common `kubectl` commands.
 
 ## Check Pod Status
 
@@ -42,7 +42,7 @@ kubectl logs nginx-demo
 
 ### Execute Commands in Containers
 
-Use `kubectl exec <podname> -- <command>` to issue shell commands inside a container. For this example, we use `kubectl exec nginx-demo -- cat /etc/os-release` to display information about the Operating System (OS) in the container. See the [kubectl exec documentation](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_exec/) for more details about the available commands.
+Use `kubectl exec <podname> -- <command>` to issue shell commands inside a container. For this example,  `kubectl exec nginx-demo -- cat /etc/os-release` displays information about the Operating System (OS) in the container. See the [kubectl exec documentation](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_exec/) for more details about the available commands.
 
 ```shell
 kubectl exec nginx-demo -- cat /etc/os-release
