@@ -36,4 +36,4 @@ Create a PR in your repository when you have completed all changes and are satis
 
 - Have someone review your writing to help you catch ambiguities and parts of the writing that may be confusing to read.
 
-- Review your final changes with fresh eyes after some time has passed to catch language, flow, and typos.
+- Review your final changes with fresh eyes after some time has passed to catch language, flow, and typos. 
