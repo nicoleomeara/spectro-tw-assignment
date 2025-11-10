@@ -57,25 +57,34 @@ HOME_URL="https://alpinelinux.org/"
 BUG_REPORT_URL="https://gitlab.alpinelinux.org/alpine/aports/-/issues"
 ```
 
-## Recommended Workflow
+## Recommended Debug Workflow
 
-Try this workflow to debug containers and pods:
+This workflow helps you quickly find and fix common issues with pods and containers. Each step builds on the last, so you can identify problems, review logs, and inspect the container environment in a logical order.
 
 1. Use `kubectl get pods` to identify pods with issues.
 2. Use `kubectl logs <podname>` to review logs for errors.
 3. Use `kubectl exec <podname> -- <command>` to inspect the container environment or review configuration files.
 
-## Advanced Debugging
+## Advanced: `kubectl debug`
 
-If you still can't find the root issue after trying the steps above, use `kubectl debug` to create a temporary copy of a pod for troubleshooting. The cloned pod stays active even if an error occurs in the container. In the example below, `nginx-demo` is the name of the original pod. The `-it` flag starts an interactive terminal session, and `--image=busybox:1.36.1` sets the container image for the debug pod:
+If you still can't find the root issue after trying the steps above, use `kubectl debug` to create a temporary copy of a pod for troubleshooting. The cloned pod stays active even if an error occurs in the container. In the example below, `nginx-demo` is the name of the original pod. The `-it` flag starts an interactive terminal session, and `--image=busybox:1.36.1` sets the container image for the debug pod.
 
 ```shell
-kubectl debug nginx-demo -it --image=busybox:1.36.1
+kubectl debug nginx-demo -it --image=busybox:1.36.1 --profile=general
+```
+
+```shell
+Defaulting debug container name to debugger-t884j.
+All commands and output from this session will be recorded in container logs, including credentials and sensitive information passed through the command prompt.
+If you don't see a command prompt, try pressing enter.
+/ # 
+/ # 
+
 ```
 
 Use the interactive shell in the cloned pod to check for problems and fix issues without changing the original pod.
 
 ## References
 
-- [`kubectl` Commands](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-strong-getting-started-strong-)
-- [What is Kubernetes](https://kubernetes.io/docs/concepts/overview/)
+- [`kubectl` Commands](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
+- [Kubernetes Overview](https://kubernetes.io/docs/concepts/overview/)
