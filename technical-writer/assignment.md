@@ -1,6 +1,6 @@
 # Debug Kubernetes with `kubectl`
 
-You use `kubectl`, the Kubernetes Command-Line Interface (CLI), to work directly with your cluster. `kubectl` talks to the Kubernetes API server and works with any standard cluster, whether it’s on your local machine using Docker Desktop or hosted by a cloud provider. This guide explains practical ways to debug pods and containers using common `kubectl` commands.
+You use `kubectl`, the Kubernetes Command-Line Interface (CLI), to work directly with your cluster. `kubectl` talks to the Kubernetes API server and works with any standard cluster, whether it’s on your local machine or in a Docker container. This guide explains practical ways to debug pods and containers using common `kubectl` commands.
 
 ## Check Pod Status
 
@@ -59,7 +59,7 @@ BUG_REPORT_URL="https://gitlab.alpinelinux.org/alpine/aports/-/issues"
 
 ## Recommended Debug Workflow
 
-This workflow helps you quickly find and fix common issues with pods and containers. Each step builds on the last, so you can identify problems, review logs, and inspect the container environment in a logical order.
+This workflow helps you find and fix common issues with pods and containers. Each step builds on the last, so you can identify problems, review logs, and inspect the container environment in a logical order.
 
 1. Use `kubectl get pods` to identify pods with issues.
 2. Use `kubectl logs <podname>` to review logs for errors.
